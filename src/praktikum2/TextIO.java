@@ -1,4 +1,4 @@
-package parktikum1.mitteminutehtud;
+package praktikum2;
 
 
 import java.io.*;

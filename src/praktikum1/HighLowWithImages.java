@@ -1,4 +1,4 @@
-//package parktikum1.mitteminutehtud;
+//package praktikum1;
 //
 //import java.awt.*;
 //import java.awt.event.*;

@@ -1,4 +1,4 @@
-package praktikumid2;
+package praktikum2;
 
 public class ArrayShit {
     public static int numberOfItems(int [] m) {

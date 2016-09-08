@@ -1,4 +1,4 @@
-package praktikumid2;
+package praktikum1;
 
 
 import java.io.*;

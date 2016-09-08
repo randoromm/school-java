@@ -1,4 +1,4 @@
-package praktikumid2;
+package praktikum2;
 
 public class GroupSize {
 	public static void main (String[] args) {

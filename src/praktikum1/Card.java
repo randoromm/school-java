@@ -1,4 +1,4 @@
-package parktikum1.mitteminutehtud;
+package praktikum1;
 /**
  * An object of type Card represents a playing card from a standard Poker deck,
  * including Jokers. The card has a suit, which can be spades, hearts, diamonds,

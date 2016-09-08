@@ -1,4 +1,4 @@
-package praktikumid2;
+package praktikum2;
 
 public class NameLength {
 	public static void main(String[] args) {

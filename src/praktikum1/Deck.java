@@ -1,4 +1,4 @@
-package parktikum1.mitteminutehtud;
+package praktikum1;
 /**
  * An object of type Deck represents a deck of playing cards. The deck is a
  * regular poker deck that contains 52 regular cards and that can also

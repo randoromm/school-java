@@ -1,4 +1,4 @@
-package parktikum1.mitteminutehtud;
+package praktikum1;
 
 /**
  * An object of type Hand represents a hand of cards.  The
