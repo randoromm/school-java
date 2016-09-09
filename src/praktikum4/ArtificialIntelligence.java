@@ -2,19 +2,20 @@ package praktikum4;
 
 /**
  * Created by rrommot on 9.09.16.
+ * Finished. Could still document and comment.
  */
 public class ArtificialIntelligence {
     public static void main(String[] args) {
         int fAge = testInput("Enter first age: ");
         int sAge = testInput("Enter second age: ");
-        int difAge = Math.abs(fAge - sAge); // Calculates the difference between ages
+        int difAge = Math.abs(fAge - sAge);  // Calculates the difference between ages
 
         if (difAge > 10) {
-            System.out.println("Pedo oled v?");
+            System.out.println("Midagi veel krõbedamat.");
         } else if (difAge > 5 && difAge <= 10) {
-            System.out.println("Toorikud lähevad peale või?");
+            System.out.println("Midagi krõbedamat.");
         } else {
-            System.out.println("Lase minna!");
+            System.out.println("Sobib!");
         }
     }
 
@@ -22,7 +23,7 @@ public class ArtificialIntelligence {
         System.out.println(question);
         int age = TextIO.getlnInt();
         if (age < 0) {
-            System.out.println("You didn't enter a valid age (Positive).");
+            System.out.println("Vanus on positiivne arv, nõdrameelne.");
             System.exit(0);
         }
         return age;

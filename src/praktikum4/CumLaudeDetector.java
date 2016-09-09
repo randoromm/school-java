@@ -2,26 +2,31 @@ package praktikum4;
 
 /**
  * Created by rrommot on 8.09.16.
- * Isn't optimized, finish at home
+ * Could still use a better
+ * final mark optimization and
+ * documentation.
  */
 public class CumLaudeDetector {
     public static void main(String[] args) {
-        System.out.println("Sisesta oma kaalutud keskhinne: ");
-        double averageMark = TextIO.getlnDouble();
-        System.out.println("Sisesta oma kaalutud keskhinne: ");
-        double finalPaperMark = TextIO.getlnInt();
+        double averageMark = markTest("Sisesta oma kaalutud keskhinne: ");
+        int finalPaperMark = (int) markTest("Sisesta oma lõputöö hinne: "); // find better solution?
 
-
-        if ((averageMark >= 0 && averageMark <= 5) && (finalPaperMark >= 0 && finalPaperMark <= 5)) {
-
-            if ((averageMark > 4.5 && averageMark <= 5) && finalPaperMark == 5) { // if mark is proper
-                System.out.println("Jah saad cum laude diplomile!");
-            } else {
-                System.out.println("Ei saa cum laudet :(");
-                System.out.println("int finalPaperMark is " + finalPaperMark);  // Double -> int ?
-            }
+        if (averageMark > 4.5 && finalPaperMark == 5) { // if mark is proper
+            System.out.println("Jah saad cum laude diplomile!");
         } else {
-            System.out.println("Hinne peab olema 0 ja 5 vahel"); // If 0 < mark > 5
+            System.out.println("Ei saa cum laudet :(");
         }
-    }
-}
+
+    } // end of main method
+    private static double markTest(String inputReq) {
+        System.out.println(inputReq);
+        double mark = TextIO.getlnDouble();
+
+        while (mark < 0 || mark > 5) {
+            System.out.println("Hinne peab olema 0 ja 5 vahel!");
+            System.out.println(inputReq);
+            mark = TextIO.getlnDouble();
+        }
+        return mark;
+    } // end of markTest
+} // end of class

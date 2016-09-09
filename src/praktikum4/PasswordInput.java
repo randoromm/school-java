@@ -2,7 +2,8 @@ package praktikum4;
 
 /**
  * Created by rrommot on 9.09.16.
- * Not finished, finish at home
+ * Finished version. Could still document
+ * and comment better :P.
  */
 public class PasswordInput {
     public static void main(String[] args) {
@@ -21,6 +22,8 @@ public class PasswordInput {
                 counter ++;
             }
         }
-        System.out.println("Sisestasid 3x parooli valesti, proovi hiljem veel."); // not working properly
+        if (counter >= 3) { // siis kui parooli on 3x valesti sisestatud
+            System.out.println("Sisestasid 3x parooli valesti, proovi hiljem veel.");
+        }
     }
 }
