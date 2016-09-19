@@ -9,6 +9,10 @@ package praktikum4;
 public class CumLaudeDetector {
     public static void main(String[] args) {
         double averageMark = markTest("Sisesta oma kaalutud keskhinne: ");
+        /*
+         * Lõputöö hinnet küsides, võiks sisestada saada aint täisarve
+         * (mitte floorida neid)
+         */
         int finalPaperMark = (int) markTest("Sisesta oma lõputöö hinne: "); // find better solution?
 
         if (averageMark > 4.5 && finalPaperMark == 5) { // if mark is proper
