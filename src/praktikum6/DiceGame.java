@@ -14,11 +14,11 @@ public class DiceGame {
         int compSum = compDice1 + compDice2;
         System.out.println();
         if (userSum < compSum) {
-            System.out.println("I win >:)!");
+            System.out.println("I win >:)");
         } else if (userSum == compSum) {
-            System.out.println("Seems like there is no winner :O!");
+            System.out.println("Seems like there is no winner :O");
         } else {
-            System.out.println("Luck is on your side :'(!");
+            System.out.println("Luck is on your side :'(");
         }
     }
 }
