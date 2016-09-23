@@ -6,22 +6,21 @@ package praktikum6;
  */
 public class Methods {
     public static void main(String[] args) {
-//        System.out.println("Sisesta arv:");
-//        double initialNumber = TextIO.getlnDouble();
-//        double powerToThree = powerToThree(initialNumber);
-//
-//        System.out.printf("%1.2f kuubis on: %1.2f", initialNumber, powerToThree);
-//        System.out.print(userInputBetween("Sisesta täisarv:", 0, 6));
+        System.out.print("Sisesta arv: ");
+        double initialNumber = TextIO.getlnDouble();
+        double powerToThree = powerToThree(initialNumber);
+
+        System.out.printf("%1.2f kuubis on: %1.2f%n", initialNumber, powerToThree);
+        System.out.println(userInputBetween("Sisesta täisarv: ", 0, 6));
         headsOrTails();
-
-
+        pickRandomPerson();
     }
 
-    public static double powerToThree(double number) {
+    private static double powerToThree(double number) {
         return Math.pow(number, 3);
     }
 
-    public static int userInputBetween(String question, int min, int max) {
+    private static int userInputBetween(String question, int min, int max) {
         int userInput;
 
         while (true) {
@@ -32,7 +31,7 @@ public class Methods {
         return userInput;
     }
 
-    public static void headsOrTails() {
+    private static void headsOrTails() {
         int userInput = userInputBetween("Kull või kiri (0 või 1): ", -1, 2);
         int headsTails = (int)Math.round(Math.random());
         if (userInput == headsTails) {
@@ -40,5 +39,13 @@ public class Methods {
         } else {
             System.out.println("No luck :(");
         }
+    }
+
+    private static void pickRandomPerson() {
+        TextIO.put("Sisesta inimeste arv: ");
+        int userInput = TextIO.getlnInt();
+        int randomPerson = (int) Math.round(Math.random() * (userInput - 1)) + 1;
+        System.out.printf("Person number %d is the lucky motherfucker!", randomPerson);
+
     }
 }
