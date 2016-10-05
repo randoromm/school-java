@@ -31,13 +31,15 @@ public class Methods {
         return userInput;
     }
 
-    private static void headsOrTails() {
+    public static boolean headsOrTails() {
         int userInput = userInputBetween("Kull või kiri (0 või 1): ", -1, 2);
         int headsTails = (int)Math.round(Math.random());
         if (userInput == headsTails) {
             System.out.println("Õige!");
+            return true;
         } else {
             System.out.println("No luck :(");
+            return false;
         }
     }
 

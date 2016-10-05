@@ -15,9 +15,7 @@ public class Hand {
 	/**
 	 * Create a hand that is initially empty.
 	 */
-	public Hand() {
-		hand = new ArrayList<Card>();
-	}
+	public Hand() { hand = new ArrayList<Card>(); }
 
 	/**
 	 * Remove all cards from the hand, leaving it empty.
