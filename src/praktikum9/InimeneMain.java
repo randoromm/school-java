@@ -9,13 +9,14 @@ import java.util.ArrayList;
 public class InimeneMain {
     public static void main(String[] args) {
         ArrayList<Inimene> people = new ArrayList<>();
+        int peopleAmount = 5; // How names do you want to ask?
 
-        for(int i = 0; i < 3; i++) {
-            System.out.printf("Sisesta nimi: %n");
+        for(int i = 0; i < peopleAmount; i++) {
+            System.out.println("Sisesta nimi: ");
             String nimi = TextIO.getln();
 
-            System.out.print("Sisesta vanus: ");
-            int vanus = TextIO.getInt();
+            System.out.println("Sisesta vanus: ");
+            int vanus = TextIO.getlnInt(); // getInt() - doesn't work, use getlnInt()
 
             people.add(new Inimene(nimi, vanus));
         }
