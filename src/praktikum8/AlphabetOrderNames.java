@@ -8,7 +8,7 @@ import java.util.Scanner;
  * fsafjasf
  * Created by rando on 10.10.16.
  */
-public class alphabetOrderNames {
+public class AlphabetOrderNames {
     public static void main(String[] args) {
         ArrayList<String> names = generateNameArrayList();
         for (String name : names) {

@@ -4,7 +4,7 @@ package praktikum8;
  * sfjalfs
  * Created by rando on 10.10.16.
  */
-public class maxElement2DArray {
+public class MaxElement2DArray {
     public static void main(String[] args) {
         System.out.println(maxElement1D(new int[] {1, -7, 12, 4, 5}));
         System.out.println(maxElement2D(new int[][] {{3, -7, 12, 4, 2}, {1, -5, 12, 9, 5}, {17, -7, 12, 99, 221}}));
