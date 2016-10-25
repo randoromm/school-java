@@ -12,7 +12,7 @@ import java.util.Set;
 public class ReadData {
     public ArrayList<Integer> medals = new ArrayList<>();
 
-    public ArrayList<Integer> test = new ArrayList<>();
+    public ArrayList<Integer> medalsDtE = new ArrayList<>();
 
     public int medalsAmount;
 
@@ -43,18 +43,20 @@ public class ReadData {
             }
         }
         Collections.sort(this.medals);
-        this.medals = duplicatesToEnd(this.medals);
+        duplicatesToEnd(this.medals); // creates array with duplicates in the end called "medalsDtE"
+        this.medals = this.medalsDtE;
     }
 
-    private ArrayList<Integer> duplicatesToEnd(ArrayList<Integer> list) {
+    private void duplicatesToEnd(ArrayList<Integer> list) {
         ArrayList<Integer> temp = new ArrayList<>();
         ArrayList<Integer> result = list;
         temp.clear();
         int lastX = 0;
-        for (int x = 1; x < medalsAmount; x++) {
+        for (int x = 1; x < result.size(); x++) {
             try {
-                if (list.get(x).equals(list.get(lastX))) {
-                    temp.add(list.get(x));
+                if (result.get(x).equals(result.get(lastX))) {
+                    // 1, 2, 3, 45, 46, 46, 46, 46, 47, 48, 48  -> 46 46 46 48 48
+                        temp.add(result.get(x));
                 }
                 lastX = x;
             } catch (IndexOutOfBoundsException e) {
@@ -66,19 +68,16 @@ public class ReadData {
         Set<Integer> set1 = new LinkedHashSet<>(result);
         result = new ArrayList<>(set1);
 
-        this.test.addAll(result);
+        this.medalsDtE.addAll(result);
 
-        Set<Integer> set2 = new LinkedHashSet<>(temp);
-
-        for (Integer i : set2) {
-            this.test.add(i);
+        if (!temp.isEmpty()){
+            duplicatesToEnd(temp);
+            temp.clear();
         }
-        if (!temp.isEmpty()) duplicatesToEnd(temp);
-        return result;
     }
 
     void printMedals() {
-        for (Integer i : this.test) {
+        for (Integer i : this.medals) {
             System.out.println(i);
         }
     }
