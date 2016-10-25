@@ -6,7 +6,8 @@ package olympiaad;
  */
 public class Medals {
     public static void main(String[] args) {
-        Data data = new Data();
-        data.printResult();
+        Data d = new Data("medalidsis.txt");
+        d.printResult();
+        System.out.println(d.result);
     }
 }

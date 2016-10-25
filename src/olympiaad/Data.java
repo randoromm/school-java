@@ -6,7 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
- * ReadData class for Medals, to read data from the "medalidsis.txt" file.
+ * ReadData class for Medals, to read data from the chosen file.
  * Created by Rando on 22.10.2016.
  */
 class Data {
@@ -14,16 +14,16 @@ class Data {
 
     private ArrayList<Integer> medalsDtE = new ArrayList<>();
 
-    private ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+    public ArrayList<ArrayList<Integer>> result = new ArrayList<>();
 
-    Data() {
-        digestData();
-    }
-
-    private void digestData() {
+    /**
+     * Reads from chosen file and digests the data, creating an object for the data.
+     * @param filePath path of the chosen text file to digest data from.
+     */
+    Data(String filePath) {
         /* Read from file */
         try {
-            TextIO.readFile("medalidsis.txt");
+            TextIO.readFile(filePath);
         }
         catch (IllegalArgumentException e) {
             System.out.println("Can't open file \"medalidsis.txt\" for reading!");
@@ -32,7 +32,7 @@ class Data {
             System.exit(1);  // Terminates the program.
         }
         /* Save the medals to array and sort the array */
-        TextIO.getInt();
+        TextIO.getInt(); // To skip medals amount, could use better solution (start reading from line 2)
         while (true) {
             try {
                 int second = TextIO.getInt();
@@ -45,6 +45,7 @@ class Data {
         separateDuplicates(this.medals); // creates array with duplicates in the end called "medalsDtE"
         breakToSeries(medalsDtE);
     }
+
 
     private void separateDuplicates(ArrayList<Integer> list) {
         ArrayList<Integer> temp = new ArrayList<>();
