@@ -10,11 +10,11 @@ import java.util.Set;
  * Created by Rando on 22.10.2016.
  */
 class Data {
-    ArrayList<Integer> medals = new ArrayList<>();
+    private ArrayList<Integer> medals = new ArrayList<>();
 
-    ArrayList<ArrayList<Integer>> medalsDtE = new ArrayList<>();
+    private ArrayList<Integer> medalsDtE = new ArrayList<>();
 
-    int medalsAmount;
+    private ArrayList<ArrayList<Integer>> result = new ArrayList<>();
 
     Data() {
         digestData();
@@ -32,8 +32,7 @@ class Data {
             System.exit(1);  // Terminates the program.
         }
         /* Save the medals to array and sort the array */
-        this.medalsAmount = TextIO.getInt();
-
+        TextIO.getInt();
         while (true) {
             try {
                 int second = TextIO.getInt();
@@ -44,8 +43,7 @@ class Data {
         }
         Collections.sort(this.medals);
         separateDuplicates(this.medals); // creates array with duplicates in the end called "medalsDtE"
-
-        breakToSeries(medalsDtE.get(0));
+        breakToSeries(medalsDtE);
     }
 
     private void separateDuplicates(ArrayList<Integer> list) {
@@ -60,7 +58,7 @@ class Data {
         Set<Integer> set1 = new LinkedHashSet<>(list); // To remove duplicates from initial array.
         list = new ArrayList<>(set1);
 
-        this.medalsDtE.add(list); // Add the non duplicate medals to global variable medalsDtE.
+        this.medalsDtE.addAll(list); // Add the non duplicate medals to global variable medalsDtE.
 
         if (!temp.isEmpty()){
             separateDuplicates(temp); // If temp array has duplicates in it, repeat the process with temp array.
@@ -73,20 +71,27 @@ class Data {
 
         boolean broken = false;
 
+        temp2.add(list.get(0));
         for (int x = 1; x < list.size(); x++) {
-            if (list.get(x) - list.get(x - 1) > 1) {
+            if (list.get(x) - list.get(x - 1) != 1) {
                 broken = true;
             }
             if (broken) {
                 temp1.add(list.get(x));
-            } else if (!broken) temp2.add(list.get(x));
-
+            } else temp2.add(list.get(x));
         }
-        System.out.println(temp2);
-        System.out.println(temp1);
+
+        result.add(temp2);
+        if (!temp1.isEmpty()) breakToSeries(temp1);
     }
 
-    void printMedals() {
-        this.medalsDtE.forEach(System.out::println); // Print out each item in medals on seperate line (method call).
+    void printResult() {
+        System.out.println(this.result.size());
+
+        this.result.forEach(list -> {
+            System.out.print(list.size());
+            list.forEach(integer -> System.out.print(" " + integer));
+            System.out.println();
+        });
     }
 }

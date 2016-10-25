@@ -7,6 +7,6 @@ package olympiaad;
 public class Medals {
     public static void main(String[] args) {
         Data data = new Data();
-        data.printMedals();
+        data.printResult();
     }
 }
