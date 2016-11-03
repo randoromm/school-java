@@ -10,7 +10,7 @@ public class Answer {
         // Your tests here
     }
 
-    public static int score (int[] points) {
+    private static int score (int[] points) {
         ArrayList<Integer> temp = new ArrayList<>();
         int result = 0;
 

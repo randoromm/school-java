@@ -32,8 +32,8 @@ class Data {
             System.exit(1);  // Terminates the program.
         }
         /* Save the medals to array and sort the array */
-        TextIO.getInt(); // To skip medals amount, could use better solution (start reading from line 2)
-        while (true) {
+        TextIO.getInt(); // Discard amount of medals on the first line of file
+        while (!TextIO.eof()) { // eof - end of file, still throws exception because using getInt not getLn.
             try {
                 int second = TextIO.getInt();
                 this.medals.add(second);
