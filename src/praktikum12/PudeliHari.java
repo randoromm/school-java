@@ -6,21 +6,23 @@ import java.awt.*;
 public class PudeliHari extends Applet {
     /*
      * Ringjoone vo~rrand parameetrilisel kujul
-     * x = r * cos(t)
-     * y = r * sin(t)
+     * x = r * cos(t) (nurga lähis kaatet)
+     * y = r * sin(t) (nurga vastas kaatet)
      * t = -PI..PI
      */
     public void paint(Graphics g) {
-        int r = 100; // Raadius
-        int x, y;
-        double t;
-
         // Kysime kui suur aken on?
         int w = getWidth();
         int h = getHeight();
 
         int x0 = w / 2; // Keskpunkt
         int y0 = h / 2;
+
+        int r = Math.min(y0, x0); // Raadius  (raadius vastavalt appleti suurusele)
+        int x, y;
+        double t;
+
+
 
         // Ta"idame tausta
         g.setColor(Color.white);
