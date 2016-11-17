@@ -35,6 +35,8 @@ public class Matrices {
         printMatrice(modulusMatrice(3, 5));
 
         printMatrice(transpose(morpheus));
+
+        System.out.println(sumOfPrimaryDiagonal(neo));
     }
 
     private static int[][] transpose(int[][] matrice) {
@@ -78,6 +80,19 @@ public class Matrices {
             result[i] = max;
         }
 
+        return result;
+    }
+
+    /**
+     * Was not a problem in class, but i think it's good to know.
+     * @param matrice 2 Dimensional array (Matrice).
+     * @return Sum of the primary diagonal elements (left top to right bottom corner)
+     */
+    private static int sumOfPrimaryDiagonal(int[][] matrice) {
+        int result = 0;
+        for(int i = 0; i < matrice.length; i++) {
+            result += matrice[i][i];
+        }
         return result;
     }
 
