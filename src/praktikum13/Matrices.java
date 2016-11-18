@@ -39,7 +39,7 @@ public class Matrices {
         System.out.println(sumOfPrimaryDiagonal(neo));
     }
 
-    private static int[][] transpose(int[][] matrice) {
+    public static int[][] transpose(int[][] matrice) {
         int[][] result = new int[matrice[0].length][matrice.length];
         for (int y = 0; y < matrice.length; y++) {
             for (int x = 0; x < matrice[y].length; x++) {
@@ -125,7 +125,7 @@ public class Matrices {
         System.out.println();
     }
 
-    private static void printMatrice(int[][] matrice) {
+    public static void printMatrice(int[][] matrice) {
         for (int[] i : matrice) {
             printOneDimArray(i);
         }
