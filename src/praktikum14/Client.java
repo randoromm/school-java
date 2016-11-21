@@ -8,40 +8,40 @@ import static praktikum14.ShoeShop.serializeClients;
  * The client class for clients of shoe shop.
  * Created by Rando on 20.11.2016.
  */
-public class Client implements Serializable{
-    String name;
-    int age;
-    int shoeNumber;
+class Client implements Serializable{
+    private String name;
+    private int age;
+    private int shoeNumber;
 
-    public Client(String name, int age, int shoeNumber) {
+    Client(String name, int age, int shoeNumber) {
         this.name = name;
         this.age = age;
         this.shoeNumber = shoeNumber;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    void setName(String name) {
         this.name = name;
         serializeClients();
     }
 
-    public int getAge() {
+    int getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    void setAge(int age) {
         this.age = age;
         serializeClients();
     }
 
-    public int getShoeNumber() {
+    int getShoeNumber() {
         return shoeNumber;
     }
 
-    public void setShoeNumber(int shoeNumber) {
+    void setShoeNumber(int shoeNumber) {
         this.shoeNumber = shoeNumber;
         serializeClients();
     }

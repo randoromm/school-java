@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by Rando on 20.11.2016.
  */
 public class ShoeShop implements Serializable{
-    public static ArrayList<Client> clients = new ArrayList<>();
+    private static ArrayList<Client> clients = new ArrayList<>();
 
     public static void main(String[] args) {
 
