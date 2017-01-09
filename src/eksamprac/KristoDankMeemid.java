@@ -6,27 +6,28 @@ package eksamprac;
  */
 public class KristoDankMeemid {
     public static void main (String[] args) {
-        // First.
-        System.out.println (allaKeskmise (new double[]{1, 3, 6, 7, 8, 3, 5, 7, 21, 3}));
-
-        System.out.println();
-
-        // Second.
-        int[][] res = muster (9);
-        for (int column = 0; column < res[0].length; column++) {
-            for (int row = 0; row < res.length; row++) {
-                System.out.print(res[row][column] + " ");
-            }
-            System.out.println();
-        }
-
-        System.out.println();
-
-        // Fourth.
-        int[] res2 = veeruSummad (new int[][] { {1,2,3}, {4,5,6} }); // {5, 7, 9}
-        for (int i : res2) {
-            System.out.print(i + " ");
-        }
+//        // First.
+//        System.out.println (allaKeskmise (new double[]{1, 3, 6, 7, 8, 3, 5, 7, 21, 3}));
+//
+//        System.out.println();
+//
+//        // Second.
+//        int[][] res = muster (9);
+//        for (int column = 0; column < res[0].length; column++) {
+//            for (int row = 0; row < res.length; row++) {
+//                System.out.print(res[row][column] + " ");
+//            }
+//            System.out.println();
+//        }
+//
+//        System.out.println();
+//
+//        // Fourth.
+//        int[] res2 = veeruSummad (new int[][] { {1,2,3}, {4,5,6} }); // {5, 7, 9}
+//        for (int i : res2) {
+//            System.out.print(i + " ");
+//        }
+        System.out.println(replaceLower("azMa"));
     }
 
     public static int allaKeskmise (double[] d) {
@@ -65,6 +66,21 @@ public class KristoDankMeemid {
         for (int column = 0; column < m[0].length; column++) {
             for (int row = 0; row < m.length; row++) {
                 result[column] += m[row][column];
+            }
+        }
+
+        return result;
+    }
+
+    private static String replaceLower(String s) {
+        String result = "";
+
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (Character.isLowerCase(ch)) {
+                result += "-";
+            } else {
+                result += ch;
             }
         }
 
