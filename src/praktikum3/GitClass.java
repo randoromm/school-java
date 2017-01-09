@@ -6,6 +6,6 @@ package praktikum3;
 public class GitClass {
     public static void main (String[] args) {
         System.out.println("Tegelesime bitbucketi ja giti üles seadmisega.");
-        System.out.println("Muud midagi väga ei teinudki :)");
+        System.out.println("Muud midagi väga ei teinudki");
     }
 }

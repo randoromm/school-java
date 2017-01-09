@@ -6,7 +6,7 @@ package praktikum5;
  */
 public class InterestingTable {
     public static void main(String[] args) {
-        int tableSize = 10;
+        int tableSize = 12;
         int k;
         for (int i = 0; i < tableSize; i++) {
             for (int j = 0; j < tableSize; j++) {
