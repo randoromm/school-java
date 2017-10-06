@@ -15,7 +15,7 @@ public class DoubleStack {
         System.out.println(test.toString());
         test.op("+");
         System.out.println(test.toString());
-        System.out.println(interpret("5 5 5 + 2 5"));
+        System.out.println(interpret("5. 5. +"));
     }
 
     private LinkedList<Double> stack;
@@ -40,12 +40,12 @@ public class DoubleStack {
     }
 
     public double pop() {
-        if (stEmpty()) throw new RuntimeException();
+        if (stEmpty()) throw new RuntimeException("Underflow: Linked list is empty.");
         return stack.pop();
     }
 
     public void op (String s) {
-        double first = pop();
+        double first = pop(); // Siin ei ole vaja UnderFlow'd kontrollida, kuna pop() meetod seda juba teeb.
         double second = pop();
 
         if (s.equals("+")) push(second + first);
@@ -55,7 +55,7 @@ public class DoubleStack {
     }
 
     public double tos() {
-        if (stEmpty()) throw new RuntimeException();
+        if (stEmpty()) throw new RuntimeException("Linked list is empty. There is no element to display.");
         return stack.peek();
     }
 
@@ -81,19 +81,19 @@ public class DoubleStack {
     }
 
     public static double interpret(String pol) {
-        if (!pol.matches("[\\d\\s*.+/-]+")) throw new RuntimeException();
+        if (!pol.matches("[\\d\\s*.+/-]+")) throw new RuntimeException("Illegal input error!");
         DoubleStack stack = new DoubleStack();
-        String[] tokens = pol.split(" +");
+        String[] tokens = pol.trim().split("\\s+");
         for (String s : tokens) {
             if (s.matches("[*+/-]$")) {
                 stack.op(s);
             } else if (s.length() > 0) {
-                stack.push(Double.parseDouble(s));
+                stack.push(Double.valueOf(s));
             }
         }
 
         double result = stack.pop();
-        if (!stack.stEmpty()) throw new RuntimeException();
+        if (!stack.stEmpty()) throw new RuntimeException("Input incorrectly balanced, interpretation incorrect.");
         return result;
     }
 
