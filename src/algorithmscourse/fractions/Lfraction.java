@@ -1,0 +1,196 @@
+package algorithmscourse.fractions;
+
+import java.util.*;
+
+/** This class represents fractions of form n/d where n and d are long integer
+ * numbers. Basic operations and arithmetics for fractions are provided.
+ */
+public class Lfraction implements Comparable<Lfraction> {
+
+    /** Main method. Different tests. */
+    public static void main (String[] param) {
+        Lfraction test1 = new Lfraction(2, 2);
+        Lfraction test2 = new Lfraction(5, 6);
+
+        System.out.println(test2.divideBy(test1));
+    }
+
+    private long numerator, denominator;
+
+    /** Constructor.
+     * @param a numerator
+     * @param b denominator > 0
+     */
+    public Lfraction (long a, long b) {
+        if (a == 0) {
+            numerator = a;
+            denominator = 1L;
+        } else if (b > 0) {
+            numerator = a;
+            denominator = b;
+        } else {
+            throw new RuntimeException("Denominator must be strictly positive!");
+        }
+    }
+
+    /** Public method to access the numerator field.
+     * @return numerator
+     */
+    public long getNumerator() {
+        return numerator;
+    }
+
+    /** Public method to access the denominator field.
+     * @return denominator
+     */
+    public long getDenominator() {
+        return denominator;
+    }
+
+    /** Conversion to string.
+     * @return string representation of the fraction
+     */
+    @Override
+    public String toString() {
+        String result = "";
+        return result.format("%1$d/%2$d", numerator, denominator); // TODO!!!
+    }
+
+    /** Equality test.
+     * @param m second fraction
+     * @return true if fractions this and m are equal
+     */
+    @Override
+    public boolean equals (Object m) {
+        boolean instanceOfLfraction = m instanceof Lfraction;
+        boolean numeratorEqual = numerator == ((Lfraction) m).numerator;
+        boolean denominatorEqual = denominator == ((Lfraction) m).denominator;
+
+        return instanceOfLfraction && numeratorEqual && denominatorEqual;
+    }
+
+    /** Hashcode has to be equal for equal fractions.
+     * @return hashcode
+     */
+    @Override
+    public int hashCode() {
+        return 0; // TODO!!!
+    }
+
+    /** Sum of fractions.
+     * @param m second addend
+     * @return this+m
+     */
+    public Lfraction plus (Lfraction m) {
+        return null; // TODO!!!
+    }
+
+    /** Multiplication of fractions.
+     * @param m second factor
+     * @return this*m
+     */
+    public Lfraction times (Lfraction m) {
+        return new Lfraction(numerator * m.numerator, denominator * m.denominator);
+    }
+
+    /** Inverse of the fraction. n/d becomes d/n.
+     * @return inverse of this fraction: 1/this
+     */
+    public Lfraction inverse() {
+        return null; // TODO!!!
+    }
+
+    /** Opposite of the fraction. n/d becomes -n/d.
+     * @return opposite of this fraction: -this
+     */
+    public Lfraction opposite() {
+        return new Lfraction(-numerator, denominator); // TODO!!!
+    }
+
+    /** Difference of fractions.
+     * @param m subtrahend
+     * @return this-m
+     */
+    public Lfraction minus (Lfraction m) {
+        return null; // TODO!!!
+    }
+
+    /** Quotient of fractions.
+     * @param m divisor
+     * @return this/m
+     */
+    public Lfraction divideBy (Lfraction m) {
+        if (m.numerator == 0) throw new RuntimeException("Cant divide by zero.");
+        if (m.numerator < 0) {
+            return new Lfraction(numerator * -m.denominator, denominator * -m.numerator);
+        }
+        return new Lfraction(numerator * m.denominator, denominator * m.numerator);
+    }
+
+    /** Comparision of fractions.
+     * @param m second fraction
+     * @return -1 if this < m; 0 if this==m; 1 if this > m
+     */
+    @Override
+    public int compareTo (Lfraction m) {
+        return 0; // TODO!!!
+    }
+
+    /** Clone of the fraction.
+     * @return new fraction equal to this
+     */
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return new Lfraction(numerator, denominator);
+    }
+
+    /** Integer part of the (improper) fraction.
+     * @return integer part of this fraction
+     */
+    public long integerPart() {
+        return 0L; // TODO!!!
+    }
+
+    /** Extract fraction part of the (improper) fraction
+     * (a proper fraction without the integer part).
+     * @return fraction part of this fraction
+     */
+    public Lfraction fractionPart() {
+        return null; // TODO!!!
+    }
+
+    /** Approximate value of the fraction.
+     * @return numeric value of this fraction
+     */
+    public double toDouble() {
+        double num = numerator;
+        double denom = denominator;
+        return num / denom;
+    }
+
+    /** Double value f presented as a fraction with denominator d > 0.
+     * @param f real number
+     * @param d positive denominator for the result
+     * @return f as an approximate fraction of form n/d
+     */
+    public static Lfraction toLfraction (double f, long d) {
+        return null; // TODO!!!
+    }
+
+    /** Conversion from string to the fraction. Accepts strings of form
+     * that is defined by the toString method.
+     * @param s string form (as produced by toString) of the fraction
+     * @return fraction represented by s
+     */
+    public static Lfraction valueOf (String s) {
+        if (!s.matches("([-]{0,1}[\\d]+[/]{1}[\\d]+)")) {
+            throw new RuntimeException("String doesn't match the proper form");
+        }
+        String[] arr = s.split("/");
+        long num = Long.parseLong(arr[0]);
+        long denom = Long.parseLong(arr[1]);
+        return new Lfraction(num, denom);
+    }
+}
+
+
