@@ -1,7 +1,5 @@
 package algorithmscourse.fractions;
 
-import java.util.*;
-
 /** This class represents fractions of form n/d where n and d are long integer
  * numbers. Basic operations and arithmetics for fractions are provided.
  */
@@ -9,10 +7,10 @@ public class Lfraction implements Comparable<Lfraction> {
 
     /** Main method. Different tests. */
     public static void main (String[] param) {
-        Lfraction test1 = new Lfraction(2, 2);
-        Lfraction test2 = new Lfraction(5, 6);
+        Lfraction test1 = new Lfraction(1, 2);
+        Lfraction test2 = new Lfraction(9, 4);
 
-        System.out.println(test2.divideBy(test1));
+        System.out.println(toLfraction(Math.PI, 7));
     }
 
     private long numerator, denominator;
@@ -26,8 +24,8 @@ public class Lfraction implements Comparable<Lfraction> {
             numerator = a;
             denominator = 1L;
         } else if (b > 0) {
-            numerator = a;
-            denominator = b;
+            numerator = a / gcd(a, b);
+            denominator = b / gcd(a, b);
         } else {
             throw new RuntimeException("Denominator must be strictly positive!");
         }
@@ -53,7 +51,7 @@ public class Lfraction implements Comparable<Lfraction> {
     @Override
     public String toString() {
         String result = "";
-        return result.format("%1$d/%2$d", numerator, denominator); // TODO!!!
+        return result.format("%1$d/%2$d", numerator, denominator);
     }
 
     /** Equality test.
@@ -62,19 +60,24 @@ public class Lfraction implements Comparable<Lfraction> {
      */
     @Override
     public boolean equals (Object m) {
+        long gcd = gcd(((Lfraction) m).numerator, ((Lfraction) m).denominator);
         boolean instanceOfLfraction = m instanceof Lfraction;
-        boolean numeratorEqual = numerator == ((Lfraction) m).numerator;
-        boolean denominatorEqual = denominator == ((Lfraction) m).denominator;
+        boolean numeratorEqual = numerator == ((Lfraction) m).numerator / gcd;
+        boolean denominatorEqual = denominator == ((Lfraction) m).denominator / gcd;
+
 
         return instanceOfLfraction && numeratorEqual && denominatorEqual;
     }
 
     /** Hashcode has to be equal for equal fractions.
+     * Materials used: https://stackoverflow.com/questions/113511/best-implementation-for-hashcode-method
      * @return hashcode
      */
     @Override
     public int hashCode() {
-        return 0; // TODO!!!
+        int result = (int) (numerator ^ (numerator >>> 32));
+        result = 31 * result + (int) (denominator ^ (denominator >>> 32));
+        return result;
     }
 
     /** Sum of fractions.
@@ -82,7 +85,9 @@ public class Lfraction implements Comparable<Lfraction> {
      * @return this+m
      */
     public Lfraction plus (Lfraction m) {
-        return null; // TODO!!!
+        long newDen = denominator * m.denominator;
+        long newNum = numerator * newDen / denominator + m.numerator * newDen / m.denominator;
+        return new Lfraction(newNum, newDen);
     }
 
     /** Multiplication of fractions.
@@ -97,14 +102,15 @@ public class Lfraction implements Comparable<Lfraction> {
      * @return inverse of this fraction: 1/this
      */
     public Lfraction inverse() {
-        return null; // TODO!!!
+        Lfraction one = new Lfraction(1, 1);
+        return one.divideBy(this);
     }
 
     /** Opposite of the fraction. n/d becomes -n/d.
      * @return opposite of this fraction: -this
      */
     public Lfraction opposite() {
-        return new Lfraction(-numerator, denominator); // TODO!!!
+        return new Lfraction(-numerator, denominator);
     }
 
     /** Difference of fractions.
@@ -112,7 +118,9 @@ public class Lfraction implements Comparable<Lfraction> {
      * @return this-m
      */
     public Lfraction minus (Lfraction m) {
-        return null; // TODO!!!
+        long newDen = denominator * m.denominator;
+        long newNum = numerator * newDen / denominator - m.numerator * newDen / m.denominator;
+        return new Lfraction(newNum, newDen);
     }
 
     /** Quotient of fractions.
@@ -133,7 +141,13 @@ public class Lfraction implements Comparable<Lfraction> {
      */
     @Override
     public int compareTo (Lfraction m) {
-        return 0; // TODO!!!
+        long commonDenominator = denominator * m.denominator;
+        long num1 = numerator * commonDenominator;
+        long num2 = m.numerator * commonDenominator;
+
+        if (num1 < num2) return -1;
+        else if (num1 == num2) return 0;
+        return 1;
     }
 
     /** Clone of the fraction.
@@ -148,7 +162,8 @@ public class Lfraction implements Comparable<Lfraction> {
      * @return integer part of this fraction
      */
     public long integerPart() {
-        return 0L; // TODO!!!
+
+        return numerator / denominator;
     }
 
     /** Extract fraction part of the (improper) fraction
@@ -156,7 +171,7 @@ public class Lfraction implements Comparable<Lfraction> {
      * @return fraction part of this fraction
      */
     public Lfraction fractionPart() {
-        return null; // TODO!!!
+        return new Lfraction(numerator % denominator, denominator);
     }
 
     /** Approximate value of the fraction.
@@ -174,7 +189,7 @@ public class Lfraction implements Comparable<Lfraction> {
      * @return f as an approximate fraction of form n/d
      */
     public static Lfraction toLfraction (double f, long d) {
-        return null; // TODO!!!
+        return new Lfraction(Math.round(f * d), d);
     }
 
     /** Conversion from string to the fraction. Accepts strings of form
@@ -190,6 +205,17 @@ public class Lfraction implements Comparable<Lfraction> {
         long num = Long.parseLong(arr[0]);
         long denom = Long.parseLong(arr[1]);
         return new Lfraction(num, denom);
+    }
+
+    /**
+     * Method to find greatest common divisor of 2 integers.
+     * @param a first integer
+     * @param b second integer
+     * @return greatest common divisor
+     */
+    public static long gcd(long a, long b) {
+        if (a == 0 || b == 0) return Math.abs(a+b); // returns which ever is not 0
+        return gcd(b, a%b);
     }
 }
 
