@@ -27,7 +27,7 @@ public class Lfraction implements Comparable<Lfraction> {
             numerator = a / gcd(a, b);
             denominator = b / gcd(a, b);
         } else {
-            throw new RuntimeException("Denominator must be strictly positive!");
+            throw new RuntimeException("Denominator must be strictly positive! Can't create new Lfraction.");
         }
     }
 
@@ -103,6 +103,7 @@ public class Lfraction implements Comparable<Lfraction> {
      */
     public Lfraction inverse() {
         Lfraction one = new Lfraction(1, 1);
+        if (this.numerator == 0L) throw new RuntimeException("Can't call inverse on 0. Can't divide by zero.");
         return one.divideBy(this);
     }
 
@@ -199,7 +200,7 @@ public class Lfraction implements Comparable<Lfraction> {
      */
     public static Lfraction valueOf (String s) {
         if (!s.matches("([-]{0,1}[\\d]+[/]{1}[\\d]+)")) {
-            throw new RuntimeException("String doesn't match the proper form");
+            throw new RuntimeException("String doesn't match the proper form: -numerator/denominator");
         }
         String[] arr = s.split("/");
         long num = Long.parseLong(arr[0]);

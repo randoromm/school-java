@@ -40,7 +40,7 @@ public class DoubleStack {
     }
 
     public double pop() {
-        if (stEmpty()) throw new RuntimeException("Underflow: Linked list is empty.");
+        if (stEmpty()) throw new RuntimeException("Underflow: Stack is empty.");
         return stack.pop();
     }
 
@@ -55,7 +55,7 @@ public class DoubleStack {
     }
 
     public double tos() {
-        if (stEmpty()) throw new RuntimeException("Linked list is empty. There is no element to display.");
+        if (stEmpty()) throw new RuntimeException("Stack is empty. There is no element to display.");
         return stack.peek();
     }
 
