@@ -45,14 +45,16 @@ public class DoubleStack {
     }
 
     public void op (String s) {
-        double first = pop(); // Siin ei ole vaja UnderFlow'd kontrollida, kuna pop() meetod seda juba teeb.
+        if (stEmpty()) throw new RuntimeException("Underflow: Stack is empty.");
+        double first = pop();
+        if (stEmpty()) throw new RuntimeException("Underflow: Stack is empty.");
         double second = pop();
 
-        if (s.equals("+")) push(second + first);
-        if (s.equals("-")) push(second - first);
-        if (s.equals("*")) push(second * first);
-        if (s.equals("/")) push(second / first);
-    }
+            if (s.equals("+")) push(second + first);
+            if (s.equals("-")) push(second - first);
+            if (s.equals("*")) push(second * first);
+            if (s.equals("/")) push(second / first);
+        }
 
     public double tos() {
         if (stEmpty()) throw new RuntimeException("Stack is empty. There is no element to display.");
@@ -81,7 +83,7 @@ public class DoubleStack {
     }
 
     public static double interpret(String pol) {
-        if (!pol.matches("[\\d\\s*.+/-]+")) throw new RuntimeException("Illegal input error!");
+        if (!pol.matches("[\\d\\s*.+/-]+")) throw new RuntimeException("Illegal input error in String pol.");
         DoubleStack stack = new DoubleStack();
         String[] tokens = pol.trim().split("\\s+");
         for (String s : tokens) {
@@ -93,7 +95,7 @@ public class DoubleStack {
         }
 
         double result = stack.pop();
-        if (!stack.stEmpty()) throw new RuntimeException("Input incorrectly balanced, interpretation incorrect.");
+        if (!stack.stEmpty()) throw new RuntimeException("Input (String pol) incorrectly balanced, interpretation incorrect.");
         return result;
     }
 
