@@ -1,5 +1,8 @@
 import java.util.*;
 
+/**
+ * Algorithm to convert left parenthetic representation of a Tree into right parenthetic representation.
+ */
 public class TreeNode {
 
     private String name;

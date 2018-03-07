@@ -5,10 +5,6 @@ import java.util.*;
 /**
  * Comparison of algorithmscourse.sorting methods. The same array of non-negative int values is
  * used for all methods.
- *
- * @author Jaanus
- * @version 3.0
- * @since 1.6
  */
 public class IntSorting {
 

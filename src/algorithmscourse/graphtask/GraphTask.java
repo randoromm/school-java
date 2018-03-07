@@ -1,6 +1,7 @@
 import java.util.*;
-/** Container class to different classes, that makes the whole
- * set of classes one class formally.
+
+/**
+ * Topological sorting algorithm for graphs.
  */
 public class GraphTask {
 
