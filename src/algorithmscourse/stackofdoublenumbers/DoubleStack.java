@@ -15,7 +15,7 @@ public class DoubleStack {
         System.out.println(test.toString());
         test.op("+");
         System.out.println(test.toString());
-        System.out.println(interpret("5. 5. +"));
+        System.out.println(interpret("2 +"));
     }
 
     private LinkedList<Double> stack;
@@ -83,11 +83,12 @@ public class DoubleStack {
     }
 
     public static double interpret(String pol) {
-        if (!pol.matches("[\\d\\s*.+/-]+")) throw new RuntimeException("Illegal input error in String pol.");
+        if (!pol.matches("[\\d\\s*.+/-]+")) throw new RuntimeException("Illegal input error in String " + pol);
         DoubleStack stack = new DoubleStack();
         String[] tokens = pol.trim().split("\\s+");
         for (String s : tokens) {
             if (s.matches("[*+/-]$")) {
+                if (stack.stack.size() < 2) throw new RuntimeException("Not enough operands in String " + pol);
                 stack.op(s);
             } else if (s.length() > 0) {
                 stack.push(Double.valueOf(s));
@@ -95,7 +96,7 @@ public class DoubleStack {
         }
 
         double result = stack.pop();
-        if (!stack.stEmpty()) throw new RuntimeException("Input (String pol) incorrectly balanced, interpretation incorrect.");
+        if (!stack.stEmpty()) throw new RuntimeException("Input " + pol + " incorrectly balanced, interpretation incorrect.");
         return result;
     }
 

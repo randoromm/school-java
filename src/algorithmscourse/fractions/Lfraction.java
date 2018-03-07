@@ -11,6 +11,7 @@ public class Lfraction implements Comparable<Lfraction> {
         Lfraction test2 = new Lfraction(9, 4);
 
         System.out.println(toLfraction(Math.PI, 7));
+        System.out.println(valueOf("-4/-8"));
     }
 
     private long numerator, denominator;
@@ -199,12 +200,16 @@ public class Lfraction implements Comparable<Lfraction> {
      * @return fraction represented by s
      */
     public static Lfraction valueOf (String s) {
-        if (!s.matches("([-]{0,1}[\\d]+[/]{1}[\\d]+)")) {
-            throw new RuntimeException("String doesn't match the proper form: -numerator/denominator");
+        if (!s.matches("([-]{0,1}[\\d]+[/]{1}[-]{0,1}[\\d]+)")) {
+            throw new RuntimeException("String " + s + " doesn't match the proper form: numerator/denominator");
         }
         String[] arr = s.split("/");
         long num = Long.parseLong(arr[0]);
         long denom = Long.parseLong(arr[1]);
+        if (denom < 0) {
+            denom *= -1;
+            num *= -1;
+        }
         return new Lfraction(num, denom);
     }
 
